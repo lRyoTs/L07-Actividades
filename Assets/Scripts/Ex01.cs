@@ -7,6 +7,7 @@ public class Ex01 : MonoBehaviour
     public GameObject cube; //The cube
     public int numberCubes = 3; //Number of cubes to instantiate
     private float maxScale = 2.5f;
+    private float minScale = 0.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -28,9 +29,9 @@ public class Ex01 : MonoBehaviour
     //FUnction that gives a random Scale
     private Vector3 RandomScale()
     {
-        float randX = Random.Range(0.5f, maxScale);
-        float randY = Random.Range(0.5f, maxScale);
-        float randZ = Random.Range(0.5f, maxScale);
+        float randX = Random.Range(minScale, maxScale);
+        float randY = Random.Range(minScale, maxScale);
+        float randZ = Random.Range(minScale, maxScale);
 
         return new Vector3(randX, randY, randZ);
     }
