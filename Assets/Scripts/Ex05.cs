@@ -19,8 +19,12 @@ public class Ex05 : MonoBehaviour
     public TextMeshProUGUI pointsText;
     public TextMeshProUGUI lifesText;
 
+    private AudioSource _audioSource;
+    public AudioClip soundDefeat;
+
     private void Awake()
     {
+        _audioSource = GetComponent<AudioSource>();
         _renderer = GetComponent<Renderer>();
     }
 
@@ -51,10 +55,12 @@ public class Ex05 : MonoBehaviour
             //Check if gameobject clicked
             if (!isHit)
             {
+                _audioSource.PlayOneShot(soundDefeat,1);
                 lifes--; //Decrease life
                 lifesText.text = $"LIVES:\n{lifes}";//Update life
                 if (lifes <= 0) {
                     isGameOver = true;
+                    _audioSource.Stop();
                     lifesText.text = $"GAME OVER";
                 }
             }
